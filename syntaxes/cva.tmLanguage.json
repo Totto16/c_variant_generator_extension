@@ -1,0 +1,176 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "C Variants",
+	"scopeName": "source.cva",
+	"foldingStartMarker": "{",
+	"foldingStopMarker": "}",
+	"TODO": "this is just WIP, it has to be improved a lot!",
+	"regex-docs": "https://macromates.com/manual/en/regular_expressions",
+	"patterns": [
+		{
+			"include": "#variant"
+		},
+		{
+			"include": "#comment"
+		}
+		
+	],
+	"repository": {
+		"variant": {
+			"begin": "(variant)\\s+((?:[A-Z][a-zA-Z0-9_]*)|(?:".*"))\\s*({)",
+			"end": "\\s*(})",
+			"name": "entity.class.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.type.cva"
+				},
+				"2": {
+					"name": "entity.name.type.cva"
+				},
+				"3": {
+					"name": "punctuation.definition.type.begin.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.type.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#variant_member"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"class_member": {
+			"begin": "\\s*([A-Z][a-zA-Z0-9_]*)\\s*({)",
+			"end": "(})\\s*(,)",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.type.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.class.member.begin.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.class.member.end.cva"
+				},
+				"2": {
+					"name": "punctuation.separator.comma.class.member.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#class_member_field"
+				}
+			]
+		},
+		"class_member_field": {
+			"begin": "\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)\\s*",
+			"name": "entity.class_field.cva",
+			"end": "(?=\\s*})|(?:(,)(?=$|\\b))",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.name.class_field.cva"
+				},
+				"2": {
+					"name": "punctuation.separator.colon.class.field.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.separator.comma.class.field.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#type"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.cva",
+					"match": "\\s*//.*"
+				},
+				{
+					"name": "comment.block.block.empty.cva",
+					"match": "\\s*/\\**/"
+				},
+				{
+					"name": "comment.block.documentation.cva",
+					"begin": "\\s*/\\*{2}",
+					"end": "\\*/",
+					"patterns": [
+						{
+							"include": "#empty_line"
+						},
+						{
+							"match": ".+?(?=\\*/)"
+						},
+						{
+							"include": "#comment_doc"
+						}
+					]
+				},
+				{
+					"name": "comment.block.cva",
+					"begin": "\\s*/\\*",
+					"end": "\\*/",
+					"patterns": [
+						{
+							"include": "#empty_line"
+						},
+						{
+							"match": ".*?(?=\\*/)"
+						}
+					]
+				},
+				{
+					"include": "#empty_line"
+				}
+			]
+		},
+		"empty_line": {
+			"name": "entity.empty-line.cva",
+			"match": "^\\s*$"
+		},
+		"comment_doc": {
+			"patterns": [
+				{
+					"name": "comment.block.documentation.cva.doc",
+					"match": "\\s*\\*\\s+(@)([a-z][a-zA-Z0-9_\\.]*)\\s+(.*)",
+					"captures": {
+						"1": {
+							"name": "punctuation.decorator.cva.doc"
+						},
+						"2": {
+							"name": "storage.type.class.cva.doc"
+						},
+						"3": {
+							"name": "comment.block.documentation.cva.doc.raw"
+						}
+					}
+				},
+				{
+					"name": "comment.block.documentation.cva",
+					"match": "\\s*\\*\\s+(.*)",
+					"captures": {
+						"1": {
+							"name": "comment.block.documentation.cva"
+						}
+					}
+				}
+			]
+		},
+	}
+}

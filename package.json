@@ -1,0 +1,78 @@
+{
+    "name": "c_variants_file_support",
+    "displayName": "C variants fiel format VScode Support",
+    "version": "1.0.0",
+    "publisher": "Totto16",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.140.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:cva"
+    ],
+    "main": "./out/extension",
+    "scripts": {
+        "package": "vsce package",
+        "publish": "vsce publish",
+        "compile": "tsc",
+        "watch": "tsc -b -w",
+        "vscode:prepublish": "npm run compile",
+        "publish-pre-release": "vsce publish --pre-release",
+        "syntax-test": "npx vscode-tmgrammar-test './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json",
+        "generate-syntax-test-snapshot": "npx vscode-tmgrammar-snap --updateSnapshot './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json",
+        "lint": "eslint .src --ext .ts,.tsx"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^11.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.6",
+        "@types/vscode": "^1.146.0",
+        "typescript": "^6.0.3",
+        "@vscode/vsce": "^4.1.1-0",
+        "vscode-tmgrammar-test": "^0.1.3",
+        "@types/mocha": "^10.0.10",
+        "@typescript-eslint/eslint-plugin": "^8.72.2",
+        "@typescript-eslint/parser": "^8.72.2",
+        "eslint": "^10.14.0",
+        "mocha": "^12.0.3"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "cva",
+                "aliases": [
+                    "C Variants"
+                ],
+                "extensions": [
+                    ".cva"
+                ],
+                "configuration": "./cva-language-configuration.json",
+                "icon": {
+                    "light": "./icons/C.svg",
+                    "dark": "./icons/C.svg"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "cva",
+                "scopeName": "source.cva",
+                "path": "./syntaxes/cva.tmLanguage.json"
+            }
+        ],
+        "configuration": {
+            "title": "CVA Language Configuration",
+            "properties": {}
+        },
+        "commands": [
+            {
+                "command": "cva-language.restartLanguageServer",
+                "title": "C Variants: Restart Language Server"
+            }
+        ]
+    }
+}
