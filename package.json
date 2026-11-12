@@ -21,8 +21,9 @@
         "watch": "tsc -b -w",
         "vscode:prepublish": "npm run compile",
         "validate": "npx @carlwr/textmate-validate ./syntaxes/cva.tmLanguage.json",
-        "syntax-test": "npx vscode-tmgrammar-test './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json",
-        "generate-syntax-test-snapshot": "npx vscode-tmgrammar-snap --updateSnapshot './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json"
+        "syntax-test": "npx vscode-tmgrammar-snap -s 'source.cva' './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json",
+        "test": "npm run validate && npm run syntax-test",
+        "generate-syntax-test-snapshot": "npx vscode-tmgrammar-snap --updateSnapshot -s 'source.cva' './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json"
     },
     "dependencies": {
         "vscode-languageclient": "^11.0.0"
@@ -32,7 +33,7 @@
         "@types/mocha": "^10.0.10",
         "@types/node": "^26.6.6",
         "@types/vscode": "^1.140.0",
-        "@vscode/vsce": "^4.1.1-0",
+        "@vscode/vsce": "^4.1.0",
         "mocha": "^12.0.3",
         "typescript": "^6.0.3",
         "vscode-tmgrammar-test": "^0.1.3"

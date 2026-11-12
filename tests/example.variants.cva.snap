@@ -1,90 +1,388 @@
 >
 >variant JsonValue {
-#^^^^^^^ source.cva entity.class.cva keyword.control.type.cva
-#       ^ source.cva entity.class.cva
-#        ^^^^^^^^^ source.cva entity.class.cva entity.name.type.cva
-#                 ^ source.cva entity.class.cva
-#                  ^ source.cva entity.class.cva punctuation.definition.type.begin.cva
+#^^^^^^^ source.cva entity.variant.cva keyword.control.variant.cva
+#       ^ source.cva entity.variant.cva
+#        ^^^^^^^^^ source.cva entity.variant.cva variable.name.cva entity.name.raw.cva
+#                 ^ source.cva entity.variant.cva
+#                  ^ source.cva entity.variant.cva punctuation.definition.variant.start.cva
 >    enum JsonValueType {
-#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva entity.class.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^ source.cva entity.variant.cva entity.enum.cva keyword.control.enum.cva
+#        ^ source.cva entity.variant.cva entity.enum.cva
+#         ^^^^^^^^^^^^^ source.cva entity.variant.cva entity.enum.cva variable.name.cva entity.name.raw.cva
+#                      ^ source.cva entity.variant.cva entity.enum.cva
+#                       ^ source.cva entity.variant.cva entity.enum.cva punctuation.definition.enum.start.cva
 >        type u8
-#^^^^^^^^^^^^^^^^ source.cva entity.class.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.enum.cva
+#        ^^^^ source.cva entity.variant.cva entity.enum.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.enum.cva entity.type.cva
+#             ^^ source.cva entity.variant.cva entity.enum.cva entity.type.cva type.name.cva storage.type.built-in.cva
 >    }
-#^^^^ source.cva entity.class.cva
-#    ^ source.cva entity.class.cva punctuation.definition.type.end.cva
+#^^^^ source.cva entity.variant.cva entity.enum.cva
+#    ^ source.cva entity.variant.cva entity.enum.cva punctuation.definition.enum.end.cva
 >    // or enum "variant" to escape keywords
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva comment.line.double-slash.cva
+#^^^^ source.cva entity.variant.cva comment.line.double-slash.cva
+#    ^^ source.cva entity.variant.cva comment.line.double-slash.cva punctuation.definition.comment.single_line.cva
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva comment.line.double-slash.cva comment.line.double-slash.content.cva
 >
 >    options {
-#^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^^^ source.cva entity.variant.cva entity.options.cva keyword.control.options.cva
+#           ^ source.cva entity.variant.cva entity.options.cva
+#            ^ source.cva entity.variant.cva entity.options.cva punctuation.definition.options.start.cva
 >        requirements {
-#^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.options.cva
+#        ^^^^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.name.function.call.option.member.cva
+#                    ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#                     ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva punctuation.definition.option.member.start.cva
 >            order best_size
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#            ^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva entity.name.function.call.option.member.entry.cva
+#                 ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva
+#                  ^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva variable.name.cva entity.name.raw.cva
 >        }
-#^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#        ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva punctuation.definition.option.member.end.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.options.cva
+#    ^ source.cva entity.variant.cva entity.options.cva punctuation.definition.options.end.cva
 >
 >    entry Null {}
-#^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >
 >    entry Array {
-#^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
 >        struct {
-#^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva keyword.control.struct.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.start.cva
 >            entry "arr" {
-#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#            ^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva keyword.control.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.begin.cva
+#                   ^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva string.quoted.double.cva
+#                      ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.end.cva
+#                       ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.start.cva
 >                type "JsonArray*"
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                ^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#                    ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva
+#                     ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.begin.cva
+#                      ^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva string.quoted.double.cva
+#                                ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.end.cva
 >            }
-#^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.end.cva
 >        }
-#^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.end.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >    
 >    entry Number {
-#^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
 >        type JsonNumber
-#^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva entity.name.raw.cva
 >        // or type JsonNumber
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva comment.line.double-slash.cva
->        /* multilien comment */
-#^^^^^^^^^^ source.cva comment.block.cva
-#          ^^^^^^^^^^^^^^^^^^^ source.cva comment.block.cva
-#                             ^^ source.cva comment.block.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva
+#        ^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva punctuation.definition.comment.single_line.cva
+#          ^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva comment.line.double-slash.content.cva
+>        /* multiline comment */
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva
+#        ^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva punctuation.definition.comment.block.multi_line.start.cva
+#          ^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva
+#                             ^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva punctuation.definition.comment.block.multi_line.end.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >
 >    entry String {
-#^^^^^^^^^^^^^^^^^^^ source.cva
->        type JsonString*
-#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        type "JsonString*"
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.begin.cva
+#              ^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva string.quoted.double.cva
+#                         ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.end.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >
 >    entry Boolean {
-#^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
 >        type JsonBoolean
-#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva entity.name.raw.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >
 >    entry Object {
-#^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
 >        struct {
-#^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva keyword.control.struct.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.start.cva
 >            entry "obj" {
-#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#            ^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva keyword.control.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.begin.cva
+#                   ^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva string.quoted.double.cva
+#                      ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.end.cva
+#                       ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.start.cva
 >                type "JsonObject*"
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                ^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#                    ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva
+#                     ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.begin.cva
+#                      ^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva string.quoted.double.cva
+#                                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.end.cva
 >            }
-#^^^^^^^^^^^^^^ source.cva
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.end.cva
 >        }
-#^^^^^^^^^^ source.cva
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.end.cva
 >    }
-#^^^^^^ source.cva
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
 >}
-#^^ source.cva
+#^ source.cva entity.variant.cva punctuation.definition.variant.end.cva
+>
+>variant JsonValue {
+#^^^^^^^ source.cva entity.variant.cva keyword.control.variant.cva
+#       ^ source.cva entity.variant.cva
+#        ^^^^^^^^^ source.cva entity.variant.cva variable.name.cva entity.name.raw.cva
+#                 ^ source.cva entity.variant.cva
+#                  ^ source.cva entity.variant.cva punctuation.definition.variant.start.cva
+>    enum JsonValueType {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^ source.cva entity.variant.cva entity.enum.cva keyword.control.enum.cva
+#        ^ source.cva entity.variant.cva entity.enum.cva
+#         ^^^^^^^^^^^^^ source.cva entity.variant.cva entity.enum.cva variable.name.cva entity.name.raw.cva
+#                      ^ source.cva entity.variant.cva entity.enum.cva
+#                       ^ source.cva entity.variant.cva entity.enum.cva punctuation.definition.enum.start.cva
+>        type u8
+#^^^^^^^^ source.cva entity.variant.cva entity.enum.cva
+#        ^^^^ source.cva entity.variant.cva entity.enum.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.enum.cva entity.type.cva
+#             ^^ source.cva entity.variant.cva entity.enum.cva entity.type.cva type.name.cva storage.type.built-in.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.enum.cva
+#    ^ source.cva entity.variant.cva entity.enum.cva punctuation.definition.enum.end.cva
+>    // or enum "variant" to escape keywords
+#^^^^ source.cva entity.variant.cva comment.line.double-slash.cva
+#    ^^ source.cva entity.variant.cva comment.line.double-slash.cva punctuation.definition.comment.single_line.cva
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva comment.line.double-slash.cva comment.line.double-slash.content.cva
+>
+>    options {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^^^ source.cva entity.variant.cva entity.options.cva keyword.control.options.cva
+#           ^ source.cva entity.variant.cva entity.options.cva
+#            ^ source.cva entity.variant.cva entity.options.cva punctuation.definition.options.start.cva
+>        requirements {
+#^^^^^^^^ source.cva entity.variant.cva entity.options.cva
+#        ^^^^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.name.function.call.option.member.cva
+#                    ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#                     ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva punctuation.definition.option.member.start.cva
+>            order best_size
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#            ^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva entity.name.function.call.option.member.entry.cva
+#                 ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva
+#                  ^^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva entity.option.member.entry.cva variable.name.cva entity.name.raw.cva
+>        }
+#^^^^^^^^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva
+#        ^ source.cva entity.variant.cva entity.options.cva entity.option.member.cva punctuation.definition.option.member.end.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.options.cva
+#    ^ source.cva entity.variant.cva entity.options.cva punctuation.definition.options.end.cva
+>
+>    entry Null {}
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>
+>    entry Array {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        struct {
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva keyword.control.struct.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.start.cva
+>            entry "arr" {
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#            ^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva keyword.control.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.begin.cva
+#                   ^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva string.quoted.double.cva
+#                      ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.end.cva
+#                       ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.start.cva
+>                type "JsonArray*"
+#^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                ^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#                    ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva
+#                     ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.begin.cva
+#                      ^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva string.quoted.double.cva
+#                                ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.end.cva
+>            }
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.end.cva
+>        }
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.end.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>    
+>    entry Number {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        type JsonNumber
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva entity.name.raw.cva
+>        // or type JsonNumber
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva
+#        ^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva punctuation.definition.comment.single_line.cva
+#          ^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.line.double-slash.cva comment.line.double-slash.content.cva
+>        /* multiline comment */
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva
+#        ^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva punctuation.definition.comment.block.multi_line.start.cva
+#          ^^^^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva
+#                             ^^ source.cva entity.variant.cva entity.entry.cva comment.block.cva punctuation.definition.comment.block.multi_line.end.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>
+>    entry String {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        type JsonString*
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva entity.name.raw.cva
+#                       ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva keyword.operator.arithmetic.ptr.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>
+>    entry Boolean {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        type JsonBoolean
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.type.cva
+#             ^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.type.cva variable.name.cva entity.name.raw.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>
+>    entry Object {
+#^^^^ source.cva entity.variant.cva
+#    ^^^^^ source.cva entity.variant.cva entity.entry.cva keyword.control.entry.cva
+#         ^ source.cva entity.variant.cva entity.entry.cva
+#          ^^^^^^ source.cva entity.variant.cva entity.entry.cva variable.name.cva entity.name.raw.cva
+#                ^ source.cva entity.variant.cva entity.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.start.cva
+>        struct {
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva
+#        ^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva keyword.control.struct.cva
+#              ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#               ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.start.cva
+>            entry "obj" {
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#            ^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva keyword.control.entry.cva
+#                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                  ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.begin.cva
+#                   ^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva string.quoted.double.cva
+#                      ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva variable.name.cva punctuation.definition.string.end.cva
+#                       ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.start.cva
+>                type "JsonObject*"
+#^^^^^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#                ^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva keyword.control.type.cva
+#                    ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva
+#                     ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.begin.cva
+#                      ^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva string.quoted.double.cva
+#                                 ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva entity.type.cva variable.name.cva punctuation.definition.string.end.cva
+>            }
+#^^^^^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva
+#            ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva entity.entry.cva punctuation.definition.entry.end.cva
+>        }
+#^^^^^^^^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva
+#        ^ source.cva entity.variant.cva entity.entry.cva entity.struct.cva punctuation.definition.struct.end.cva
+>    }
+#^^^^ source.cva entity.variant.cva entity.entry.cva
+#    ^ source.cva entity.variant.cva entity.entry.cva punctuation.definition.entry.end.cva
+>}
+#^ source.cva entity.variant.cva punctuation.definition.variant.end.cva
 >
