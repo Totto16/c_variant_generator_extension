@@ -28,6 +28,7 @@
     "dependencies": {
         "vscode-languageclient": "^11.0.0"
     },
+    "packageManager": "npm@12.2.2",
     "devDependencies": {
         "@carlwr/textmate-validate": "^1.1.0",
         "@types/mocha": "^10.0.10",
@@ -69,6 +70,6 @@
         "commands": []
     },
     "allowScripts": {
-        "@vscode/vsce-sign@2.1.0": true
+        "@vscode/vsce-sign@2.1.1": true
     }
 }
