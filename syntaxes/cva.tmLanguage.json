@@ -2,9 +2,8 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "C Variants",
 	"scopeName": "source.cva",
-	"foldingStartMarker": "{",
-	"foldingStopMarker": "}",
-	"TODO": "this is just WIP, it has to be improved a lot!",
+	"foldingStartMarker": "\\{",
+	"foldingStopMarker": "\\}",
 	"regex-docs": "https://macromates.com/manual/en/regular_expressions",
 	"patterns": [
 		{
@@ -464,78 +463,154 @@
 		"comment": {
 			"patterns": [
 				{
-					"name": "comment.line.double-slash.cva",
-					"match": "\\s*//.*"
+					"include": "#comment_single_line"
 				},
 				{
-					"name": "comment.block.block.empty.cva",
-					"match": "\\s*/\\**/"
+					"include": "#comment_multi_line_empty"
 				},
 				{
-					"name": "comment.block.documentation.cva",
-					"begin": "\\s*/\\*{2}",
-					"end": "\\*/",
-					"patterns": [
-						{
-							"include": "#empty_line"
-						},
-						{
-							"match": ".+?(?=\\*/)"
-						},
-						{
-							"include": "#comment_doc"
-						}
-					]
+					"include": "#comment_multi_line_doc"
 				},
 				{
-					"name": "comment.block.cva",
-					"begin": "\\s*/\\*",
-					"end": "\\*/",
-					"patterns": [
-						{
-							"include": "#empty_line"
-						},
-						{
-							"match": ".*?(?=\\*/)"
-						}
-					]
+					"include": "#comment_multi_line_normal"
 				},
 				{
 					"include": "#empty_line"
 				}
 			]
 		},
+		"comment_single_line": {
+			"name": "comment.line.double-slash.cva",
+			"match": "\\s*(//)(.*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.comment.single_line.cva"
+				},
+				"2": {
+					"name": "comment.line.double-slash.content.cva"
+				}
+			}
+		},
+		"comment_multi_line_empty": {
+			"name": "comment.block.block.empty.cva",
+			"match": "\\s*(/\\**/)",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.empty.cva"
+				}
+			}
+		},
+		"comment_multi_line_doc": {
+			"name": "comment.block.documentation.cva",
+			"begin": "\\s*(/\\*{2})",
+			"end": "(\\*/)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.doc.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.doc.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#empty_line"
+				},
+				{
+					"include": "#comment_multi_line_end"
+				},
+
+				{
+					"include": "#comment_doc"
+				}
+			]
+		},
+
+		"comment_multi_line_end": {
+			"match": ".+?(?=\\*/)",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.multi_line.end.cva"
+				}
+			}
+		},
+
+		"comment_multi_line_normal": {
+			"name": "comment.block.cva",
+			"begin": "\\s*(/\\*)",
+			"end": "(\\*/)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.multi_line.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.multi_line.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#empty_line"
+				},
+
+				{
+					"include": "#comment_multi_line_end_opt"
+				}
+			]
+		},
+		"comment_multi_line_end_opt": {
+			"match": ".*?(?=\\*/)",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.comment.block.multi_line.end.cva"
+				}
+			}
+		},
 		"empty_line": {
 			"name": "entity.empty-line.cva",
-			"match": "^\\s*$"
+			"match": "^(\\s*)$",
+			"captures": {
+				"1": {
+					"name": "entity.empty-line.content.cva"
+				}
+			}
 		},
 		"comment_doc": {
 			"patterns": [
 				{
-					"name": "comment.block.documentation.cva.doc",
-					"match": "\\s*\\*\\s+(@)([a-z][a-zA-Z0-9_\\.]*)\\s+(.*)",
-					"captures": {
-						"1": {
-							"name": "punctuation.decorator.cva.doc"
-						},
-						"2": {
-							"name": "storage.type.class.cva.doc"
-						},
-						"3": {
-							"name": "comment.block.documentation.cva.doc.raw"
-						}
-					}
+					"include": "#comment_doc_block_attributes"
 				},
 				{
-					"name": "comment.block.documentation.cva",
-					"match": "\\s*\\*\\s+(.*)",
-					"captures": {
-						"1": {
-							"name": "comment.block.documentation.cva"
-						}
-					}
+					"include": "#comment_doc_block_content"
 				}
 			]
+		},
+		"comment_doc_block_attributes": {
+			"name": "comment.block.documentation.cva.doc",
+			"match": "\\s*\\*\\s+(@)([a-z][a-zA-Z0-9_\\.]*)\\s+(.*)",
+			"captures": {
+				"1": {
+					"name": "punctuation.decorator.cva.doc"
+				},
+				"2": {
+					"name": "storage.type.class.cva.doc"
+				},
+				"3": {
+					"name": "comment.block.documentation.cva.doc.raw"
+				}
+			}
+		},
+		"comment_doc_block_content": {
+			"name": "comment.block.documentation.cva",
+			"match": "\\s*\\*\\s+(.*)",
+			"captures": {
+				"1": {
+					"name": "comment.block.documentation.cva"
+				}
+			}
 		},
 		"keyword": {
 			"match": "(?:\\b(variant|enum|entry|type|options|struct)\\b)",

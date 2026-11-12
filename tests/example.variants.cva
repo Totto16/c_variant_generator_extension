@@ -24,11 +24,11 @@ variant JsonValue {
     entry Number {
         type JsonNumber
         // or type JsonNumber
-        /* multilien comment */
+        /* multiline comment */
     }
 
     entry String {
-        type JsonString*
+        type "JsonString*"
     }
 
     entry Boolean {
@@ -43,7 +43,6 @@ variant JsonValue {
         }
     }
 }
-
 
 variant JsonValue {
     enum JsonValueType {
@@ -70,7 +69,7 @@ variant JsonValue {
     entry Number {
         type JsonNumber
         // or type JsonNumber
-        /* multilien comment */
+        /* multiline comment */
     }
 
     entry String {
