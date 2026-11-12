@@ -163,6 +163,49 @@
 				}
 			]
 		},
+		"type_expression": {
+			"patterns": [
+				{
+					"include": "#type_expression_simple"
+				},
+				{
+					"include": "#type_expression_struct"
+				}
+			]
+		},
+		"type_expression_struct": {
+			"begin": "(struct)\\s+(\\{)",
+			"end": "\\s*(\\})",
+			"name": "entity.struct.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.struct.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.struct.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.struct.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#struct_content"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"struct_content": {
+			"patterns": [
+				{
+					"include": "#variant_member_content_entry"
+				}
+			]
+		},
 		"type_expression_simple": {
 			"begin": "(type)\\s+",
 			"end": "$",
@@ -375,7 +418,11 @@
 			]
 		},
 		"entry_member_content_impl": {
-			"patterns": []
+			"patterns": [
+				{
+					"include": "#type_expression"
+				}
+			]
 		},
 		"identifier": {
 			"patterns": [
@@ -389,16 +436,19 @@
 		},
 		"identifier_raw": {
 			"name": "variable.name.cva",
-			"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+			"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)(?:\\b|$)([\\*]*)",
 			"captures": {
 				"1": {
 					"name": "entity.name.raw.cva"
+				},
+				"2": {
+					"name": "keyword.operator.arithmetic.ptr.cva"
 				}
 			}
 		},
 		"identifier_string": {
 			"name": "variable.name.cva",
-			"match": "\\b(?:(\")([a-zA-Z0-9_]*[*]*)(\"))\\b",
+			"match": "(?:(\")([a-zA-Z0-9_]*[\\*]*)(\"))",
 			"captures": {
 				"1": {
 					"name": "punctuation.definition.string.begin.cva"
@@ -495,7 +545,7 @@
 			}
 		},
 		"punctuation": {
-			"match": "(?:\\b(\\{|\\})\\b)",
+			"match": "(?:\\b(\\{|\\}|\")\\b)",
 			"name": "entity.punctuation.cva",
 			"captures": {
 				"0": { "name": "punctuation.any.cva" }
