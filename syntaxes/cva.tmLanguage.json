@@ -13,11 +13,10 @@
 		{
 			"include": "#comment"
 		}
-		
 	],
 	"repository": {
 		"variant": {
-			"begin": "(variant)\\s+((?:[A-Z][a-zA-Z0-9_]*)|(?:".*"))\\s*({)",
+			"begin": "(variant)\\s+((?:[A-Z][a-zA-Z0-9_]*)|(?:\".*\"))\\s*({)",
 			"end": "\\s*(})",
 			"name": "entity.class.cva",
 			"beginCaptures": {
@@ -171,6 +170,6 @@
 					}
 				}
 			]
-		},
+		}
 	}
 }

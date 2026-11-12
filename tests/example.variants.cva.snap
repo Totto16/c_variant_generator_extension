@@ -1,0 +1,90 @@
+>
+>variant JsonValue {
+#^^^^^^^ source.cva entity.class.cva keyword.control.type.cva
+#       ^ source.cva entity.class.cva
+#        ^^^^^^^^^ source.cva entity.class.cva entity.name.type.cva
+#                 ^ source.cva entity.class.cva
+#                  ^ source.cva entity.class.cva punctuation.definition.type.begin.cva
+>    enum JsonValueType {
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva entity.class.cva
+>        type u8
+#^^^^^^^^^^^^^^^^ source.cva entity.class.cva
+>    }
+#^^^^ source.cva entity.class.cva
+#    ^ source.cva entity.class.cva punctuation.definition.type.end.cva
+>    // or enum "variant" to escape keywords
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva comment.line.double-slash.cva
+>
+>    options {
+#^^^^^^^^^^^^^^ source.cva
+>        requirements {
+#^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>            order best_size
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>        }
+#^^^^^^^^^^ source.cva
+>    }
+#^^^^^^ source.cva
+>
+>    entry Null {}
+#^^^^^^^^^^^^^^^^^^ source.cva
+>
+>    entry Array {
+#^^^^^^^^^^^^^^^^^^ source.cva
+>        struct {
+#^^^^^^^^^^^^^^^^^ source.cva
+>            entry "arr" {
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>                type "JsonArray*"
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>            }
+#^^^^^^^^^^^^^^ source.cva
+>        }
+#^^^^^^^^^^ source.cva
+>    }
+#^^^^^^ source.cva
+>    
+>    entry Number {
+#^^^^^^^^^^^^^^^^^^^ source.cva
+>        type JsonNumber
+#^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>        // or type JsonNumber
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva comment.line.double-slash.cva
+>        /* multilien comment */
+#^^^^^^^^^^ source.cva comment.block.cva
+#          ^^^^^^^^^^^^^^^^^^^ source.cva comment.block.cva
+#                             ^^ source.cva comment.block.cva
+>    }
+#^^^^^^ source.cva
+>
+>    entry String {
+#^^^^^^^^^^^^^^^^^^^ source.cva
+>        type JsonString*
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>    }
+#^^^^^^ source.cva
+>
+>    entry Boolean {
+#^^^^^^^^^^^^^^^^^^^^ source.cva
+>        type JsonBoolean
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>    }
+#^^^^^^ source.cva
+>
+>    entry Object {
+#^^^^^^^^^^^^^^^^^^^ source.cva
+>        struct {
+#^^^^^^^^^^^^^^^^^ source.cva
+>            entry "obj" {
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>                type "JsonObject*"
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cva
+>            }
+#^^^^^^^^^^^^^^ source.cva
+>        }
+#^^^^^^^^^^ source.cva
+>    }
+#^^^^^^ source.cva
+>}
+#^^ source.cva
+>
