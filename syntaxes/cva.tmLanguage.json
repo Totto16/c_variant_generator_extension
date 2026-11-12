@@ -23,8 +23,8 @@
 	"repository": {
 		"variant": {
 			"begin": "(variant)\\s+",
-			"end": "\\s*(\})",
-			"name": "entity.class.cva",
+			"end": "\\s*(\\})",
+			"name": "entity.variant.cva",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.variant.cva"
@@ -49,7 +49,7 @@
 		},
 		"variant_member_name": {
 			"begin": "(?<=(?:variant)\\s+)",
-			"end": "(\{)\\s*",
+			"end": "(\\{)\\s*",
 			"beginCaptures": {},
 			"endCaptures": {
 				"1": {
@@ -73,8 +73,309 @@
 			"patterns": [
 				{
 					"include": "#comment"
+				},
+				{
+					"include": "#variant_member_content_impl"
+				},
+				{
+					"include": "#keyword"
+				},
+				{
+					"include": "#punctuation"
 				}
 			]
+		},
+		"variant_member_content_impl": {
+			"patterns": [
+				{
+					"include": "#variant_member_content_enum"
+				},
+				{
+					"include": "#variant_member_content_options"
+				},
+				{
+					"include": "#variant_member_content_entry"
+				}
+			]
+		},
+		"variant_member_content_enum": {
+			"begin": "(enum)\\s+",
+			"end": "\\s*(\\})",
+			"name": "entity.enum.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.enum.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.enum.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#enum_member_name"
+				},
+				{
+					"include": "#enum_member_content"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"enum_member_name": {
+			"begin": "(?<=(?:enum)\\s+)",
+			"end": "(\\{)\\s*",
+			"beginCaptures": {},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.enum.start.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#enum_member_name_impl"
+				}
+			]
+		},
+		"enum_member_name_impl": {
+			"patterns": [
+				{
+					"include": "#identifier"
+				}
+			]
+		},
+		"enum_member_content": {
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#enum_member_content_impl"
+				}
+			]
+		},
+		"enum_member_content_impl": {
+			"patterns": [
+				{
+					"include": "#type_expression_simple"
+				}
+			]
+		},
+		"type_expression_simple": {
+			"begin": "(type)\\s+",
+			"end": "$",
+			"name": "entity.type.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.type.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.type.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.type.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#type_name_builtin"
+				},
+				{
+					"include": "#type_name_user"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"type_name_builtin": {
+			"name": "type.name.cva",
+			"match": "\\b(bool|u8|u16|u32|u64)\\b",
+			"captures": {
+				"1": {
+					"name": "storage.type.built-in.cva"
+				}
+			}
+		},
+		"type_name_user": {
+			"patterns": [
+				{
+					"include": "#identifier"
+				}
+			]
+		},
+		"variant_member_content_options": {
+			"begin": "(options)\\s+(\\{)",
+			"end": "\\s*(\\})",
+			"name": "entity.options.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.options.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.options.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.options.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#options_member_content"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"options_member_content": {
+			"patterns": [
+				{
+					"include": "#options_member_content_impl"
+				}
+			]
+		},
+		"options_member_content_impl": {
+			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+(\\{)\\s*",
+			"end": "\\s*(\\})",
+			"name": "entity.option.member.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.call.option.member.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.option.member.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.option.member.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#options_member_content_impl_content"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"options_member_content_impl_content": {
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#options_member_content_impl"
+				}
+			]
+		},
+		"options_member_content_impl": {
+			"patterns": [
+				{
+					"include": "#general_expression_simple"
+				}
+			]
+		},
+		"general_expression_simple": {
+			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+",
+			"end": "$",
+			"name": "entity.option.member.entry.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.call.option.member.entry.cva"
+				},
+				"2": {
+					"name": "punctuation.definition.option.member.entry.start.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.option.member.entry.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#identifier"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"variant_member_content_entry": {
+			"begin": "(entry)\\s+",
+			"end": "\\s*(\\})",
+			"name": "entity.entry.cva",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.entry.cva"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.entry.end.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#entry_member_name"
+				},
+				{
+					"include": "#entry_member_content"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"entry_member_name": {
+			"begin": "(?<=(?:entry)\\s+)",
+			"end": "(\\{)\\s*",
+			"beginCaptures": {},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.entry.start.cva"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#entry_member_name_impl"
+				}
+			]
+		},
+		"entry_member_name_impl": {
+			"patterns": [
+				{
+					"include": "#identifier"
+				}
+			]
+		},
+		"entry_member_content": {
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#entry_member_content_impl"
+				},
+				{
+					"include": "#keyword"
+				},
+				{
+					"include": "#punctuation"
+				}
+			]
+		},
+		"entry_member_content_impl": {
+			"patterns": []
 		},
 		"identifier": {
 			"patterns": [
@@ -88,10 +389,10 @@
 		},
 		"identifier_raw": {
 			"name": "variable.name.cva",
-			"match": "\\b([a-z][a-zA-Z0-9_]*)\\b",
+			"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
 			"captures": {
 				"1": {
-					"name": "variable.name.raw.cva"
+					"name": "entity.name.raw.cva"
 				}
 			}
 		},
@@ -181,14 +482,14 @@
 			]
 		},
 		"keyword": {
-			"match": "(?:\\b(variant|enum|type|options|struct)\\b)",
+			"match": "(?:\\b(variant|enum|entry|type|options|struct)\\b)",
 			"name": "entity.keyword.cva",
 			"captures": {
 				"0": { "name": "keyword.control.type.cva" }
 			}
 		},
 		"punctuation": {
-			"match": "(?:\\b(\{|\})\\b)",
+			"match": "(?:\\b(\\{|\\})\\b)",
 			"name": "entity.punctuation.cva",
 			"captures": {
 				"0": { "name": "punctuation.any.cva" }
