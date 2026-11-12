@@ -11,11 +11,15 @@
     "engines": {
         "vscode": "^1.140.0"
     },
+    "main": "./out/extension",
     "categories": [
         "Programming Languages"
     ],
     "scripts": {
         "package": "vsce package",
+        "compile": "tsc",
+        "watch": "tsc -b -w",
+        "vscode:prepublish": "npm run compile",
         "syntax-test": "npx vscode-tmgrammar-test './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json",
         "generate-syntax-test-snapshot": "npx vscode-tmgrammar-snap --updateSnapshot './tests/*.cva' -g ./syntaxes/cva.tmLanguage.json"
     },

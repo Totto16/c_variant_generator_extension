@@ -14,3 +14,4 @@ src/**
 .eslintignore
 .eslintrc
 tests/**
+tsconfig.tsbuildinfo
