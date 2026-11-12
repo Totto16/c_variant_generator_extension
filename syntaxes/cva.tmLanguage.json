@@ -11,13 +11,13 @@
 			"include": "#variant"
 		},
 		{
-			"include": "#comment"
-		},
-		{
 			"include": "#keyword"
 		},
 		{
 			"include": "#punctuation"
+		},
+		{
+			"include": "#comment"
 		}
 	],
 	"repository": {
@@ -72,9 +72,6 @@
 		"variant_member_content": {
 			"patterns": [
 				{
-					"include": "#comment"
-				},
-				{
 					"include": "#variant_member_content_impl"
 				},
 				{
@@ -82,6 +79,9 @@
 				},
 				{
 					"include": "#punctuation"
+				},
+				{
+					"include": "#comment"
 				}
 			]
 		},
@@ -149,10 +149,10 @@
 		"enum_member_content": {
 			"patterns": [
 				{
-					"include": "#comment"
+					"include": "#enum_member_content_impl"
 				},
 				{
-					"include": "#enum_member_content_impl"
+					"include": "#comment"
 				}
 			]
 		},
@@ -242,7 +242,7 @@
 			]
 		},
 		"options_member_content_impl": {
-			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+(\\{)\\s*",
+			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+(\\{)",
 			"end": "\\s*(\\})",
 			"name": "entity.option.member.cva",
 			"beginCaptures": {
@@ -270,14 +270,14 @@
 		"options_member_content_impl_content": {
 			"patterns": [
 				{
-					"include": "#comment"
+					"include": "#options_member_content_impl_content_impl"
 				},
 				{
-					"include": "#options_member_content_impl"
+					"include": "#comment"
 				}
 			]
 		},
-		"options_member_content_impl": {
+		"options_member_content_impl_content_impl": {
 			"patterns": [
 				{
 					"include": "#general_expression_simple"
@@ -285,7 +285,7 @@
 			]
 		},
 		"general_expression_simple": {
-			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+",
+			"begin": "([a-zA-Z_][a-zA-Z0-9_]*)\\s+(?!\\{)",
 			"end": "$",
 			"name": "entity.option.member.entry.cva",
 			"beginCaptures": {
@@ -361,9 +361,6 @@
 		"entry_member_content": {
 			"patterns": [
 				{
-					"include": "#comment"
-				},
-				{
 					"include": "#entry_member_content_impl"
 				},
 				{
@@ -371,6 +368,9 @@
 				},
 				{
 					"include": "#punctuation"
+				},
+				{
+					"include": "#comment"
 				}
 			]
 		},
@@ -380,10 +380,10 @@
 		"identifier": {
 			"patterns": [
 				{
-					"include": "#identifier_raw"
+					"include": "#identifier_string"
 				},
 				{
-					"include": "#identifier_string"
+					"include": "#identifier_raw"
 				}
 			]
 		},
@@ -398,10 +398,16 @@
 		},
 		"identifier_string": {
 			"name": "variable.name.cva",
-			"match": "\\b(\"([a-zA-Z0-9_]*[*]*)\")\\b",
+			"match": "\\b(?:(\")([a-zA-Z0-9_]*[*]*)(\"))\\b",
 			"captures": {
 				"1": {
-					"name": "variable.name.string.cva"
+					"name": "punctuation.definition.string.begin.cva"
+				},
+				"2": {
+					"name": "string.quoted.double.cva"
+				},
+				"3": {
+					"name": "punctuation.definition.string.end.cva"
 				}
 			}
 		},
